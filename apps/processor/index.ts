@@ -5,7 +5,7 @@ async function startProcessor(){
   while(true){
     const response=await redis.xread(
       "BLOCK",0,
-      "STREAMS","notifications","$"
+      "STREAMS","NOTIFICATIONS","$"
     )
     if(!response) continue;
     const stream = response[0];

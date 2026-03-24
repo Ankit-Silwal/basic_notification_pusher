@@ -18,8 +18,9 @@ async function startWorker(){
         if(key && value){
           data[key]=value;
         }
-        console.log("Notification send yeaaahhhhhhh",data.message);
+        
       }
+      console.log("Notification send yeaaahhhhhhh",data.message);
     }
   }
 }
