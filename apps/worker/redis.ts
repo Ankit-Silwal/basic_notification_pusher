@@ -1,5 +1,5 @@
 import {Redis} from "ioredis"
 
-export const redis=new Redis({port:6969})
+export const redis=new Redis({port:6379})
 
 export default redis;
