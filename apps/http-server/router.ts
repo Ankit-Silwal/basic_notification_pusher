@@ -17,13 +17,7 @@ router.post("/notify",async (req:Request,res:Response)=>{
     }
     const notificationId=randomUUID();
     await redis.xadd(
-      "NOTIFICATION_RESPONSE","*",
-      "TYPE","NOTIFICATION_PENDING",
-      "NOTIFICATION_ID",notificationId,
-      "MESSAGE",data.message
-    );
-    await redis.xadd(
-      "NOTIFICATION","*",
+      "NOTIFICATIONS","*",
       "type","CREATE_NOTIFICATION",
       "NOTIFICATION_ID",notificationId,
       "MESSAGE",data.message
@@ -31,7 +25,7 @@ router.post("/notify",async (req:Request,res:Response)=>{
     console.log(`Notification to be send:${notificationId} =>${data.message}`)
     return res.status(200).json({
       success:true,
-      message:"The message is to be sent",
+      message:"The message is queued",
       notificationId
     })
   }catch(err){
