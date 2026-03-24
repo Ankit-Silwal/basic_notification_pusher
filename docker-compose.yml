@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  redis:
+    image: redis:7
+    container_name: redis_for_notification_pusher
+    ports:
+      - "6969:6379"
+  postgres:
+    image: postgres:15
+    container_name: postgres_for_notification_pusher
+    ports:
+      - "5444:5432"
+    environment:
+      POSTGRES_USER: npusher
+      POSTGRES_PASSWORD: npusher
+      POSTGRES_DB: npusher
